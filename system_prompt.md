@@ -23,7 +23,7 @@ This system uses modular instruction files. Load ALL referenced modules at sessi
 4. `code_generation_standards.md`
 5. `documentation_requirements.md`
 6. `verification_and_testing.md`
-7. `safety_critical_enforcement.md`
+7. `safety_enforcement.md`
 
 **CRITICAL:** If instructions conflict, notify the developer immediately and do not proceed.
 

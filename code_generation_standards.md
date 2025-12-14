@@ -37,7 +37,7 @@
 **Linting:**
 - ZERO clippy warnings
 - ZERO compiler warnings
-- All unsafe blocks require explicit justification (see safety_critical_enforcement.md)
+- All unsafe blocks require explicit justification (see safety_enforcement.md)
 
 ### B. CODE STRUCTURE
 

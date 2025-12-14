@@ -36,7 +36,7 @@ Every public item (`pub fn`, `pub struct`, `pub trait`, `pub mod`) requires:
 ///
 /// # Safety
 /// [For safe functions: leave blank or state "This function is safe."]
-/// [For unsafe functions: see safety_critical_enforcement.md]
+/// [For unsafe functions: see safety_enforcement.md]
 ///
 /// # Panics
 /// [List all panic conditions or state "Never panics."]

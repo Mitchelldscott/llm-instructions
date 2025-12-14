@@ -61,7 +61,7 @@
   - CI/CD PIPELINE: Enforced checks (cargo check, fmt, clippy, test, doc, audit)
 - **Key Rule:** Code without verification is unsafe
 
-### 7. **safety_critical_enforcement.md** (Unsafe Code Policy)
+### 7. **safety_enforcement.md** (Unsafe Code Policy)
 - **Purpose:** Strictest enforcement of unsafe code practices
 - **Content:**
   - JUSTIFICATION FRAMEWORK: Every unsafe block needs preconditions, invariants, postconditions, rationale
@@ -93,12 +93,10 @@ documentation_requirements.md (Documentation contract)
     ↓
 verification_and_testing.md (Verification strategy)
     ↓
-safety_critical_enforcement.md (Hardest constraints)
+safety_enforcement.md (Hardest constraints)
 ```
 
 **Conflict Resolution:**
-- If modules conflict, system_prompt.md rule applies: "MOST RESTRICTIVE interpretation"
-- All modules are MANDATORY
 - No module can override another; conflicts must go to user for clarification
 
 **Extension Points:**
@@ -106,63 +104,17 @@ safety_critical_enforcement.md (Hardest constraints)
 - Existing modules can be extended with new sections
 - Changes trigger instruction update protocol (operational_rules.md | SECTION: INSTRUCTION UPDATE PROTOCOL)
 
----
-## HOW TO USE THIS INSTRUCTION SET
-
-### For the User (You)
-
-1. **Load all files** into your LLM context at session start
-   - Provide files in order: system_prompt.md → safety_enforcement.md
-   - Confirm assistant acknowledges all modules loaded
-
-2. **Make requests clearly**
-   - Specify domain, language, constraints
-   - Provide WCET budget (for real-time code)
-   - Provide precision tolerance (for numerical code)
-   - Request formal verification method (if critical)
-
-3. **Correct the assistant when needed**
-   - State what you want to change
-   - Assistant will cite conflicting rule
-   - You append explicit instruction to relevant file
-   - Assistant proceeds with updated instructions
-
-4. **Review compliance status**
-   - Every response starts with COMPLIANCE STATUS: ✓/✗/⚠
-   - If ✗, assistant explains why and requests clarification/update
-
-### For the Assistant
-
-1. **On session start:**
-   - Load all 8 files in order
-   - Confirm: "Modules loaded: 1/8 → 8/8. Ready for instructions."
-
-2. **On every request:**
-   - Check decision tree
-   - Verify scope (scope_and_context.md)
-   - Check for conflicts (operational_rules.md)
-   - Generate output or refuse with specific rule reference
-   - Include compliance status and citations
-
-3. **When corrected:**
-   - Follow instruction update protocol (operational_rules.md | SECTION 3)
-   - Request explicit appended instruction
-   - Wait for update before proceeding
-   - Do NOT infer, assume, or compromise
-
 ## INTEGRATION GUIDE
 
 ### Adding as a Git Subtree
-
-To enforce these standards across multiple projects, add this repository as a subtree:
 
 ```bash
 # Add remote (replace URL with your fork)
 git remote add llm-instructions https://github.com/username/llm-instructions.git
 
 # Add subtree to 'docs/llm-instructions' directory
-git subtree add --prefix docs/llm-instructions llm-instructions main --squash
+git subtree add --prefix llm-instructions llm-instructions master --squash
 
 # Pull updates later
-git subtree pull --prefix docs/llm-instructions llm-instructions main --squash
+git subtree pull --prefix llm-instructions llm-instructions master --squash
 ```
