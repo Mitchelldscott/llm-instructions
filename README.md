@@ -149,3 +149,20 @@ safety_critical_enforcement.md (Hardest constraints)
    - Request explicit appended instruction
    - Wait for update before proceeding
    - Do NOT infer, assume, or compromise
+
+## INTEGRATION GUIDE
+
+### Adding as a Git Subtree
+
+To enforce these standards across multiple projects, add this repository as a subtree:
+
+```bash
+# Add remote (replace URL with your fork)
+git remote add llm-instructions https://github.com/username/llm-instructions.git
+
+# Add subtree to 'docs/llm-instructions' directory
+git subtree add --prefix docs/llm-instructions llm-instructions main --squash
+
+# Pull updates later
+git subtree pull --prefix docs/llm-instructions llm-instructions main --squash
+```
