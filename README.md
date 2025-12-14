@@ -112,7 +112,7 @@ safety_enforcement.md (Hardest constraints)
 # Add remote (replace URL with your fork)
 git remote add llm-instructions https://github.com/username/llm-instructions.git
 
-# Add subtree to 'docs/llm-instructions' directory
+# Add subtree to 'llm-instructions' directory
 git subtree add --prefix llm-instructions llm-instructions master --squash
 
 # Pull updates later
